@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block title %}IC Traditions Challenge{% endblock %}
+
+{% block page_content %}
+    <!-- Page Content -->
+
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>IC Traditions Challenge</h1>
+            <p class="lead">Admin Homepage</p>
+        </div>
+    </div>
+
+    <h2>Submissions to Approve/Deny</h2>
+
+    <div start="a">
+       {% for photo in photoList %}
+           <div class="adminGrid">
+           <img src="../static/pics/{{ photo }}" alt="Another image" height="200" class="photoGridAdmin">
+            <form class ="adminbtn", name="approve", method="POST">
+                <p id="adminDesc"><strong>User: </strong>{{ userNameList[loop.index-1] }}</p>
+                <p id="adminDesc"><strong>Challenge: </strong>{{ challengeNameList[loop.index-1] }}</p>
+                <p id="adminDesc"><strong>Description: </strong>{{ descriptionList[loop.index-1] }}</p>
+                <input type = "submit", name="submit", value="Approve: {{ photo }}" class="adminbtn">
+                <input type = "submit", name="submit", value="Deny: {{ photo }}" class="adminbtn">
+            </form>
+           </div>
+       {% endfor %}
+   </div>
+
+        <!-- /.row -->
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+{% endblock %}
+

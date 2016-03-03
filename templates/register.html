@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}IC Traditions Challenge{% endblock %}
+
+{% block page_content %}
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>IC Traditions Challenge</h1>
+            <p class="lead">Registration</p>
+        </div>
+    </div>
+
+    {{ wtf.quick_form(form) }}
+
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Prizes{% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>IC Traditions Challenge</h1>
+            <p class="lead">Prizes</p>
+        </div>
+    </div>
+
+        <div class="prize prizel">
+        <h4>Prize 1</h4>
+
+       {% for prize in prize1List %}
+           <li>{{ prize }}</li>
+       {% endfor %}
+
+        </div>
+
+        <div class="prize">
+        <h4>Prize 2</h4>
+       {% for prize in prize2List %}
+           <li>{{ prize }}</li>
+       {% endfor %}
+        </div>
+
+        <div class="prize">
+        <h4>Prize 3</h4>
+       {% for prize in prize3List %}
+           <li>{{ prize }}</li>
+       {% endfor %}
+        </div>
+
+    <script src="static/js/jquery.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+
+{% endblock %}

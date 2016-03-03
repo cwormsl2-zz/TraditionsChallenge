@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block title %}IC Traditions Challenge{% endblock %}
+
+{% block page_content %}
+
+
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1>IC Traditions Challenge</h1>
+            <p class="lead">Homepage</p>
+        </div>
+    </div>
+
+    {% if isLoggedIn %}
+        <h2>Upload a Photo</h2>
+    {%  endif %}
+    {% if isAdminLoggedIn %}
+        <h2>I AM AN ADMIN</h2>
+    {%  endif %}
+
+    <h3>Completed a new challenge recently? Upload a photo to prove it!</h3>
+
+    <form class="submitForm" action="" method=post enctype=multipart/form-data>
+        <p><input type=file name=file></p>
+        Description of photo:
+        <input type="text" name="description">
+        <p>
+         <label>Select challenge</label>
+         <select name = "challenge">
+             <!--<option value = "1"}>Sign your class banner at the Community Picnic directly following Convocation</option>
+             <option value = "2"}>Participate in your ICC Theme Kick Off Event during Fall Welcome</option>-->
+              {% for challenge in challengeList %}
+                 <!-- don't know how to dynamically make value diff numbers - this is what the python gets -could hard code the challenges-->
+                <option value = {{loop.index}}>{{ challenge }}</option>
+            {% endfor %}
+         </select>
+        </p>
+        <p> <input type=submit value=Upload id="submit" class="upload"></p>
+
+    </form>
+
+    <br>
+    <h2>Progress</h2>
+    <h3>Check how close your are to completeing all 20 challenges</h3>
+
+    <img src="../static/progress/progress-0.png" alt="progress-bar" id="progress">
+
+    <h2>20 Challenges</h2>
+    <h3>See the status of all your challenges</h3>
+
+    <ul start="a">
+   {% for challenge in challengeList %}
+
+       {% if statusList[loop.index-1] == -1 %}
+           <li><img src="../static/checkboxes/checkbox.png" id="checkbox" class="{{ [loop.index-1] }}">{{ challenge }}</li>
+       {% elif statusList[loop.index-1] == 0 %}
+           <li><img src="../static/checkboxes/checkbox-0.png" id="checkbox" class="{{ [loop.index-1] }}">{{ challenge }}</li>
+       {% elif statusList[loop.index-1] == 1 %}
+           <li><img src="../static/checkboxes/checkbox-1.png" id="checkbox" class="{{ [loop.index-1] }}">{{ challenge }}</li>
+       {% elif statusList[loop.index-1] == 2 %}
+           <li><img src="../static/checkboxes/checkbox-2.png" id="checkbox" class="{{ [loop.index-1] }}">{{ challenge }}</li>
+       {% endif %}
+
+   {% endfor %}
+    </ul>
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <script>
+
+    $(document).ready(function(){
+
+        var picture = document.getElementById("progress");
+
+        picture.src =  "../static/progress/progress-"+{{ numComplete }}+".png"
+
+     });
+    </script>
+
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}IC Traditions Challenge{% endblock %}
+
+{% block page_content %}
+    <!-- Page Content -->
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h1>IC Traditions Challenge</h1>
+                <p>Sponsored by Students Today Alumni Tomorrow</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <div>
+            <a class=landingbtn href="/login.html">Login</a>
+            <a class=landingbtn href="/register.html">Register</a>
+        </div>
+
+
+
+        {% if isLoggedIn %}
+            <p>Student</p>
+        {% endif %}
+        {% if isAdminLoggedIn %}
+            <p>Admin</p>
+        {% endif %}
+
+        <div>
+            <p id="landingText">Become an Ithaca College Traditions Keeper by completing the 20 challenges listed below.  Earn Traditions Keeper mementos by submitting photo artifacts from challenges on this website.</p>
+            <ol id="landingList" start="a">
+                {% for challenge in challengeList %}
+                    <li>{{ challenge }}</li>
+                {% endfor %}
+            </ol>
+        </div>
+
+    <!-- jQuery Version 1.11.1 -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+{% endblock %}
