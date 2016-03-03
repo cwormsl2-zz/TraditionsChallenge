@@ -1,3 +1,13 @@
+'''
+Authors: Caitlin Wormsley, Lisa Famularo, Sabrina Knight
+Final Project for Advanced Web Programming at Ithaca College
+Fall 2015
+Used the code from chapter 5a from the book "Flask Web Development: Developing Web Applications
+    by Miguel Grinberg as a base for this project
+'''
+
+
+
 import os
 
 from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory, session
