@@ -1,3 +1,6 @@
+This project was built off of code provided from the textbook 'Flask Web Development' by Miguel Grinberg. 
+
+
 Flasky
 ======
 
